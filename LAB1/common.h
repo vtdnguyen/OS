@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include <conio.h>
-
+#include <limits.h>
 typedef int bool;
 
 #define true 1

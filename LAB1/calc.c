@@ -25,7 +25,7 @@ double calculate_divide(int num1, char op, int num2){
         if (result == (int)result) {
             return result;
         } else {
-            return round(result * 100) / 100; // Round to 2 decimal places
+            return result; // Round to 2 decimal places
         }
     } else {
         printf("MATH ERROR\n");
@@ -36,7 +36,7 @@ double calculate_divide(int num1, char op, int num2){
 void waiting(){
     char cont;
     printf("Press ENTER button to continue...");
-    getch(); // Read a character
+    while (getchar() != '\n'){}
      //while ((cont = getchar()) != '\n' && cont != EOF); // Flush stdin
     return;
 }
@@ -123,7 +123,8 @@ int main(){
             continue; // Exit the loop
         }
 
-        char *ope = process_string(operation);
+        char *ope_t = process_string(operation);
+        char *ope = process_string(ope_t);
         // Perform operations based on user input here
         if (sscanf(ope, "%d%c%d", &num1, &op, &num2) != 3) {
             printf("SYNTAX ERROR\n");
@@ -137,7 +138,7 @@ int main(){
             result = calculate_divide(num1, op, num2);
             if (result != INT_MAX && result != (int)result) 
                 printf("%.2lf\n", result);
-            else 
+            else if (result != INT_MAX)
                 printf("%d\n",(int)result);
             int success = save_number(result, ans_file);
         }

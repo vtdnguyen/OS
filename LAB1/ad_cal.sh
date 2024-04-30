@@ -73,7 +73,7 @@ checking() {
 	    # Extract
 	    num1=$(echo "$numbers" | awk '{print $1}')
 	    num2=$(echo "$numbers" | awk '{print $2}')
-
+		
 	    # KIEM TRA 2 SO
 	    if ! [[ "$num1" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
 		echo "SYNTAX ERROR"
@@ -96,7 +96,6 @@ calculate() {
     			
     	    operator=$(echo "$operation" | sed 's/[0-9]//g' | tr -d '\n')
 	    numbers=$(echo "$operation" | sed 's/[^0-9.]/ /g')
-	    echo "$operator $numbers"
 	    ################## 
 	    check=$(checking "$operator" "$numbers")
 	    if [[ "$check" == "SYNTAX ERROR" ]]; then
